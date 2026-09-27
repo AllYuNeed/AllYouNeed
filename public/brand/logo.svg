@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 48" width="260" height="48">
+  <title>Allyouneed</title>
+  <rect x="2" y="2" width="20" height="20" rx="6" fill="#534AB7"/>
+  <rect x="26" y="2" width="20" height="20" rx="6" fill="#7F77DD"/>
+  <rect x="2" y="26" width="20" height="20" rx="6" fill="#7F77DD"/>
+  <rect x="26" y="26" width="20" height="20" rx="10" fill="#EF9F27"/>
+  <text x="60" y="34" font-family="Plus Jakarta Sans, Inter, Arial, sans-serif" font-weight="700" font-size="28" letter-spacing="-0.5" fill="#0F172A">allyou<tspan fill="#7F77DD">need</tspan></text>
+</svg>
