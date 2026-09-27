@@ -1,0 +1,155 @@
+@import "tailwindcss";
+/* Planning notes and review diffs mention old class names; scanning them ships stale rules. */
+@source not "../docs";
+@source not "../.superpowers";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --primary: #534ab7;
+  --primary-soft: #eeedfe;
+  /* Ink tokens (not spec tokens): solid fills that carry white text, and primary text on primary-soft. */
+  --primary-solid: #534ab7;
+  --primary-ink: #534ab7;
+  --accent: #ef9f27;
+  --background: #ffffff;
+  --surface: #f7f7fb;
+  --border: #e5e7eb;
+  --text: #0f172a;
+  --text-muted: #475569;
+  --glass: rgba(255, 255, 255, 0.72);
+  --shadow-color: 15 23 42;
+  color-scheme: light;
+}
+
+.dark {
+  --primary: #7f77dd;
+  --primary-soft: #26215c;
+  /* White on #6a61cf is 4.97:1; #c9c5f5 on primary-soft is 8.79:1 (the spec #7f77dd gives 3.76:1 and 3.84:1). */
+  --primary-solid: #6a61cf;
+  --primary-ink: #c9c5f5;
+  --accent: #fac775;
+  --background: #0b1020;
+  --surface: #121833;
+  --border: #232b4d;
+  --text: #e7e9f5;
+  --text-muted: #a3a9c7;
+  --glass: rgba(11, 16, 32, 0.72);
+  --shadow-color: 0 0 0;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-solid: var(--primary-solid);
+  --color-primary-ink: var(--primary-ink);
+  --color-accent: var(--accent);
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0 1px 2px rgb(var(--shadow-color) / 0.06), 0 12px 32px -12px rgb(var(--shadow-color) / 0.18);
+  --shadow-lift: 0 2px 4px rgb(var(--shadow-color) / 0.08), 0 24px 48px -16px rgb(var(--shadow-color) / 0.28);
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-aurora: aurora 18s ease-in-out infinite alternate;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-spin-slow: spin 8s linear infinite;
+  --animate-shine: shine 1.2s ease-out forwards;
+
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+  @keyframes aurora {
+    0% { transform: translate3d(-8%, -6%, 0) scale(1); }
+    50% { transform: translate3d(6%, 4%, 0) scale(1.15); }
+    100% { transform: translate3d(-4%, 8%, 0) scale(1.05); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes shine {
+    from { transform: translateX(-120%) skewX(-12deg); }
+    to { transform: translateX(220%) skewX(-12deg); }
+  }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes rotate-angle {
+  to { --angle: 360deg; }
+}
+
+@layer base {
+  * { border-color: var(--border); }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-background text-text font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 { @apply font-display tracking-tight; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-primary; }
+  ::selection { background: color-mix(in srgb, var(--primary) 25%, transparent); }
+}
+
+@layer utilities {
+  .glass {
+    background: var(--glass);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+  }
+  .text-gradient {
+    background-image: linear-gradient(100deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .dot-grid {
+    background-image: radial-gradient(color-mix(in srgb, var(--text) 12%, transparent) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .mask-fade-x {
+    mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  }
+  .conic-border {
+    position: relative;
+    background: conic-gradient(from var(--angle), var(--primary), var(--accent), var(--primary));
+    animation: rotate-angle 6s linear infinite;
+  }
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1.5px;
+    background-repeat: no-repeat;
+    background-position: left 100%;
+    transition: background-size 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-underline:hover, .link-underline:focus-visible { background-size: 100% 1.5px; }
+  .preserve-3d { transform-style: preserve-3d; }
+  .perspective { perspective: 1200px; }
+}
+
+/* Theme change: circular reveal driven from ThemeToggle via the View Transitions API. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 2; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .conic-border, .animate-marquee, .animate-aurora, .animate-float, .animate-spin-slow { animation: none !important; }
+}

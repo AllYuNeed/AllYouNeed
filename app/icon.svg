@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <title>Allyouneed</title>
+  <rect x="2" y="2" width="20" height="20" rx="6" fill="#534AB7"/>
+  <rect x="26" y="2" width="20" height="20" rx="6" fill="#7F77DD"/>
+  <rect x="2" y="26" width="20" height="20" rx="6" fill="#7F77DD"/>
+  <rect x="26" y="26" width="20" height="20" rx="10" fill="#EF9F27"/>
+</svg>
