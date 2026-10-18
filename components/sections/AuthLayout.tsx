@@ -12,7 +12,7 @@ export function AuthLayout({ title, lead, children }: { title: string; lead: str
   return (
     <Container className="py-8 sm:py-12">
       <div className="grid items-stretch gap-8 lg:grid-cols-2">
-        <Reveal variant="scaleIn" className="relative hidden overflow-hidden rounded-[2rem] bg-gradient-to-br from-primary via-[#6A61CF] to-[#7F77DD] dark:from-primary-solid dark:via-[#5A51C0] dark:to-[#4B43A6] p-10 text-white lg:block">
+        <Reveal variant="scaleIn" className="relative hidden overflow-hidden rounded-[2rem] bg-gradient-to-br from-primary-solid via-[#5A51C0] to-[#4B43A6] p-10 text-white lg:block">
           <div aria-hidden="true" className="absolute inset-0 dot-grid opacity-25" />
           <div aria-hidden="true" className="absolute -right-24 -top-24 size-80 rounded-full bg-accent/30 blur-3xl animate-aurora" />
           <div className="relative flex h-full flex-col">

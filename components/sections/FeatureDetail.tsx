@@ -35,7 +35,7 @@ export function FeatureDetail({ module: mod, index }: { module: Module; index: n
               {mod.mockup === "none" ? (
                 <div className="grid min-h-56 place-items-center rounded-xl bg-surface p-6">
                   <div className="text-center">
-                    <span className="mx-auto grid size-20 place-items-center rounded-3xl bg-gradient-to-br from-primary to-[#7F77DD] text-white shadow-lift dark:from-primary-solid dark:to-[#4B43A6]"><mod.icon aria-hidden="true" className="size-9" /></span>
+                    <span className="mx-auto grid size-20 place-items-center rounded-3xl bg-gradient-to-br from-primary-solid to-[#4B43A6] text-white shadow-lift"><mod.icon aria-hidden="true" className="size-9" /></span>
                     <div className="mt-5 flex flex-wrap justify-center gap-1.5">
                       {(mod.chips ?? []).map((chip) => (
                         <span key={chip} className="rounded-full border border-border bg-background px-2.5 py-1 text-xs text-text-muted">{chip}</span>

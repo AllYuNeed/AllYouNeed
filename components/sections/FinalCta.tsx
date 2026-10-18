@@ -10,7 +10,7 @@ export function FinalCta({ title = "Run your whole business on Allyouneed.", bod
     <section className="py-20 sm:py-28">
       <Container>
         <Reveal variant="scaleIn">
-          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-primary via-[#6A61CF] to-[#7F77DD] dark:from-primary-solid dark:via-[#5A51C0] dark:to-[#4B43A6] px-6 py-16 text-center text-white shadow-lift sm:px-12 sm:py-20">
+          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-primary-solid via-[#5A51C0] to-[#4B43A6] px-6 py-16 text-center text-white shadow-lift sm:px-12 sm:py-20">
             <div aria-hidden="true" className="absolute inset-0 dot-grid opacity-30 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
             <div aria-hidden="true" className="absolute -left-20 -top-20 size-72 rounded-full bg-accent/30 blur-3xl animate-aurora" />
             <div aria-hidden="true" className="absolute -bottom-24 -right-16 size-72 rounded-full bg-white/20 blur-3xl animate-aurora [animation-delay:-8s]" />

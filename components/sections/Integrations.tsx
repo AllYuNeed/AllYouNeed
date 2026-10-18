@@ -29,7 +29,7 @@ export function Integrations() {
         </Stagger>
         <div className="mt-6 grid gap-4 lg:grid-cols-2">
           <Reveal>
-            <Card className="relative h-full overflow-hidden bg-gradient-to-br from-primary to-[#7F77DD] text-white dark:from-primary-solid dark:to-[#4B43A6]">
+            <Card className="relative h-full overflow-hidden bg-gradient-to-br from-primary-solid to-[#4B43A6] text-white">
               <span className="absolute -right-10 -top-10 size-40 rounded-full bg-white/10 blur-2xl" aria-hidden="true" />
               <Bot aria-hidden="true" className="size-7" />
               <h3 className="mt-4 font-display text-xl font-bold">AI across every module</h3>
