@@ -5,6 +5,7 @@ import { site } from "@/content/site";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
+import { PlaceholderTag } from "@/components/ui/PlaceholderTag";
 import { Reveal } from "@/components/motion/Reveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { ContactForm } from "@/components/forms/ContactForm";
@@ -37,9 +38,9 @@ export default function ContactPage() {
               <Card>
                 <h2 className="font-display text-lg font-bold text-text">Reach us directly</h2>
                 <ul className="mt-4 space-y-3 text-sm">
-                  <li className="flex gap-3"><Mail aria-hidden="true" className="size-5 shrink-0 text-primary" /><a href={`mailto:${site.email}`} className="link-underline text-text">{site.email}</a></li>
-                  <li className="flex gap-3"><Phone aria-hidden="true" className="size-5 shrink-0 text-primary" /><a href={site.phoneHref} className="link-underline text-text">{site.phone}</a></li>
-                  <li className="flex gap-3"><MapPin aria-hidden="true" className="size-5 shrink-0 text-primary" /><span className="text-text-muted">{site.address}</span></li>
+                  <li className="flex gap-3"><Mail aria-hidden="true" className="size-5 shrink-0 text-primary" /><a href={`mailto:${site.email}`} className="link-underline text-text">{site.email}</a>{site.contactIsPlaceholder ? <PlaceholderTag /> : null}</li>
+                  <li className="flex gap-3"><Phone aria-hidden="true" className="size-5 shrink-0 text-primary" /><a href={site.phoneHref} className="link-underline text-text">{site.phone}</a>{site.contactIsPlaceholder ? <PlaceholderTag /> : null}</li>
+                  <li className="flex gap-3"><MapPin aria-hidden="true" className="size-5 shrink-0 text-primary" /><span className="text-text-muted">{site.address}</span>{site.contactIsPlaceholder ? <PlaceholderTag /> : null}</li>
                   <li className="flex gap-3"><Clock aria-hidden="true" className="size-5 shrink-0 text-primary" /><span className="text-text-muted">{site.hours}</span></li>
                 </ul>
               </Card>
