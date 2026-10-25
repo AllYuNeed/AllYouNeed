@@ -24,39 +24,42 @@ vi.mock("lenis/react", () => ({
   useLenis: () => null,
 }));
 
-class IO {
-  observe() {}
-  unobserve() {}
-  disconnect() {}
-  takeRecords() { return []; }
-  readonly root = null;
-  readonly rootMargin = "";
-  readonly thresholds = [];
+// Browser stubs. Files that opt into `@vitest-environment node` (the database tests) have no window to stub.
+if (typeof window !== "undefined") {
+  class IO {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+    takeRecords() { return []; }
+    readonly root = null;
+    readonly rootMargin = "";
+    readonly thresholds = [];
+  }
+  Object.defineProperty(window, "IntersectionObserver", { writable: true, value: IO });
+  Object.defineProperty(globalThis, "IntersectionObserver", { writable: true, value: IO });
+
+  class RO {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  }
+  Object.defineProperty(window, "ResizeObserver", { writable: true, value: RO });
+
+  // matchMedia: reduced motion off, hover available, by default.
+  Object.defineProperty(window, "matchMedia", {
+    writable: true,
+    value: (query: string) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: () => {},
+      removeListener: () => {},
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      dispatchEvent: () => false,
+    }),
+  });
+
+  window.scrollTo = vi.fn() as unknown as typeof window.scrollTo;
+  Element.prototype.scrollIntoView = vi.fn();
 }
-Object.defineProperty(window, "IntersectionObserver", { writable: true, value: IO });
-Object.defineProperty(globalThis, "IntersectionObserver", { writable: true, value: IO });
-
-class RO {
-  observe() {}
-  unobserve() {}
-  disconnect() {}
-}
-Object.defineProperty(window, "ResizeObserver", { writable: true, value: RO });
-
-// matchMedia: reduced motion off, hover available, by default.
-Object.defineProperty(window, "matchMedia", {
-  writable: true,
-  value: (query: string) => ({
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener: () => {},
-    removeListener: () => {},
-    addEventListener: () => {},
-    removeEventListener: () => {},
-    dispatchEvent: () => false,
-  }),
-});
-
-window.scrollTo = vi.fn() as unknown as typeof window.scrollTo;
-Element.prototype.scrollIntoView = vi.fn();

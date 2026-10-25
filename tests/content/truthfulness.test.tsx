@@ -55,8 +55,15 @@ describe("fictional content sits in content/ with a PLACEHOLDER marker", () => {
     for (const s of expertServices) expect(screen.getByRole("heading", { level: 3, name: s.title })).toBeInTheDocument();
   });
 
-  test("site hours are marked and the tel: link is derived from the phone number", () => {
-    expect(definitionWithContext("content/site.ts", "hours")).toContain("PLACEHOLDER");
+  test("the tel: link is derived from the phone number, and the placeholder contact details are marked", () => {
     expect(site.phoneHref).toBe(`tel:+${site.phone.replace(/\D/g, "")}`);
+    expect(source("content/site.ts")).toMatch(/PLACEHOLDER[^\n]*\n\s*const phone/);
+    expect(definitionWithContext("content/site.ts", "email")).toContain("PLACEHOLDER");
+    expect(definitionWithContext("content/site.ts", "address")).toContain("PLACEHOLDER");
+    expect(site.contactIsPlaceholder).toBe(true);
+  });
+
+  test("office hours are exactly 9:00 AM to 8:00 PM IST, shown on the contact page", () => {
+    expect(site.hours).toBe("9:00 AM to 8:00 PM IST");
   });
 });

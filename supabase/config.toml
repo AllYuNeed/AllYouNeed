@@ -1,0 +1,15 @@
+# Settings for the Supabase CLI's LOCAL stack (`npx supabase start`) and `supabase db push`.
+# Hand-written and minimal: it has not been run against the CLI. Your hosted project is configured in the
+# dashboard instead; docs/SUPABASE_SETUP.md lists the matching settings (redirect URLs, confirmations, password length).
+
+project_id = "allyouneed"
+
+[auth]
+site_url = "http://localhost:3000"
+# Where email links may send the visitor. Add your production and preview URLs in the dashboard, not here.
+additional_redirect_urls = ["http://localhost:3000/auth/callback/", "http://127.0.0.1:3000/auth/callback/"]
+minimum_password_length = 8
+
+[auth.email]
+enable_signup = true
+enable_confirmations = true

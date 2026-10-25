@@ -139,10 +139,12 @@ describe("class usage", () => {
   });
 });
 
-describe("white text on the indigo gradient panels in dark mode", () => {
-  // Spec §6: text/background pairs meet WCAG AA. In dark mode the panels carrying white text use a deeper indigo
-  // gradient (controller ruling); every white text style is checked against every stop it can sit on, with any
-  // translucent white/black fill between the text and the panel composited over that stop.
+type Theme = "light" | "dark";
+
+describe.each(["light", "dark"] as Theme[])("white text on the indigo gradient panels (%s mode)", (theme) => {
+  // Spec §6: text/background pairs meet WCAG AA in both themes. Panels carrying white text use a deep indigo
+  // gradient (controller ruling) — primary-solid through #5A51C0 to #4B43A6 — so every white text style is checked
+  // against every stop it can sit on, with any translucent white/black fill composited over that stop.
   const hexRgb = (hex: string) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
   const rgbHex = (rgb: number[]) => "#" + rgb.map((v) => Math.round(v).toString(16).padStart(2, "0")).join("").toUpperCase();
   const over = (top: string, alpha: number, below: string) => {
@@ -151,13 +153,15 @@ describe("white text on the indigo gradient panels in dark mode", () => {
   };
 
   const classesOf = (el: Element) => (el.getAttribute("class") ?? "").split(/\s+/).filter(Boolean);
-  /** The dark-mode value of a utility group on one element: `dark:` wins over the unprefixed class. */
+  /** The value of a utility group on one element in this theme: in dark mode `dark:` wins over the unprefixed class. */
   const darkClass = (el: Element, test: (value: string) => boolean) => {
     const cls = classesOf(el);
-    return cls.map((c) => /^dark:(.+)$/.exec(c)?.[1]).find((v): v is string => !!v && test(v)) ?? cls.find((c) => !c.includes(":") && test(c));
+    const plain = cls.find((c) => !c.includes(":") && test(c));
+    if (theme === "light") return plain;
+    return cls.map((c) => /^dark:(.+)$/.exec(c)?.[1]).find((v): v is string => !!v && test(v)) ?? plain;
   };
   const colour = (value: string) => {
-    if (value === "primary" || value === "primary-solid") return token(".dark", value);
+    if (value === "primary" || value === "primary-solid") return token(theme === "dark" ? ".dark" : ":root", value);
     const hex = /^\[(#[0-9a-fA-F]{6})\]$/.exec(value)?.[1];
     expect(hex, `resolvable gradient stop ${value}`).toBeDefined();
     return hex!.toUpperCase();
@@ -205,9 +209,10 @@ describe("white text on the indigo gradient panels in dark mode", () => {
   const panelsOf = (container: HTMLElement) =>
     [...container.querySelectorAll("[class*='bg-gradient-to-']")].filter((el) => classesOf(el).includes("text-white"));
 
-  // The ruling's deeper dark gradient: primary-solid (#6A61CF) through #5A51C0 to #4B43A6; two-stop panels keep two.
-  const threeStop = ["#6A61CF", "#5A51C0", "#4B43A6"];
-  const twoStop = ["#6A61CF", "#4B43A6"];
+  // primary-solid is #534AB7 in light mode and #6A61CF in dark; two-stop panels keep two.
+  const solid = theme === "dark" ? "#6A61CF" : "#534AB7";
+  const threeStop = [solid, "#5A51C0", "#4B43A6"];
+  const twoStop = [solid, "#4B43A6"];
   const cases: [string, () => React.ReactElement, string[]][] = [
     ["FinalCta", () => <FinalCta />, threeStop],
     ["Integrations AI card", () => <Integrations />, twoStop],
@@ -215,7 +220,7 @@ describe("white text on the indigo gradient panels in dark mode", () => {
     ["FeatureDetail icon tile", () => <FeatureDetail module={modules.find((mod) => mod.mockup === "none")!} index={0} />, twoStop],
   ];
 
-  test.each(cases)("%s: every white text style meets AA against every dark gradient stop", (_name, ui, expectedStops) => {
+  test.each(cases)("%s: every white text style meets AA against every gradient stop", (_name, ui, expectedStops) => {
     const { container } = render(ui());
     const panels = panelsOf(container);
     expect(panels).toHaveLength(1);
