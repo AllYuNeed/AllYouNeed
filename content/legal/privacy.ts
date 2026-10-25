@@ -1,4 +1,5 @@
 import type { LegalDoc } from "./types";
+import { site } from "../site";
 
 // PLACEHOLDER — sample text. Have a lawyer review before launch.
 export const privacyDoc: LegalDoc = {
@@ -12,7 +13,7 @@ export const privacyDoc: LegalDoc = {
     { heading: "4. Legal basis and consent", body: ["We process personal data with your consent or for legitimate uses permitted under the DPDP Act, such as performing a contract you have entered into. You may withdraw consent at any time; this does not affect processing already carried out."] },
     { heading: "5. Sharing", body: ["We share data with sub-processors (cloud hosting in India, email and messaging providers, payment gateways) under written contracts, with government portals when you file returns, and with professionals from our network when you engage them. We do not sell personal data."] },
     { heading: "6. Retention", body: ["Account data is retained while your account is active and for 90 days after closure. Financial records may be retained longer where required by law (for example, eight years under the Companies Act, 2013). Backups are purged on a rolling schedule."] },
-    { heading: "7. Your rights", body: ["You may access, correct, update or request erasure of your personal data, nominate a person to exercise your rights, and raise a grievance. Contact our Grievance Officer at privacy@allyouneed.in; we respond within 30 days. You may escalate to the Data Protection Board of India."] },
+    { heading: "7. Your rights", body: ["You may access, correct, update or request erasure of your personal data, nominate a person to exercise your rights, and raise a grievance. Contact our Grievance Officer at " + site.email + "; we respond within 30 days. You may escalate to the Data Protection Board of India."] },
     { heading: "8. Security", body: ["Data is encrypted in transit and at rest, access is role-based and logged, and we run regular vulnerability assessments. Our practices are designed to align with ISO 27001 and SOC 2 control frameworks."] },
     { heading: "9. Cookies", body: ["We use strictly necessary cookies for login and preferences, and analytics cookies only with consent. You can manage cookies in your browser settings."] },
     { heading: "10. Changes", body: ["We will notify account holders by email of material changes at least 15 days before they take effect."] },

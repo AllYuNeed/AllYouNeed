@@ -49,7 +49,7 @@ export const plans: Plan[] = [
     monthly: null,
     users: "Unlimited users",
     description: "Dedicated compliance team, SSO and custom integrations.",
-    features: ["Everything in Business", "Dedicated chartered accountant", "SSO (SAML / Google Workspace) and audit logs", "Custom integrations and data residency options", "99.9% uptime SLA with 24×7 support"],
+    features: ["Everything in Business", "Dedicated chartered accountant", "SSO (SAML / Google Workspace) and audit logs", "Custom integrations and data residency options", "Uptime SLA and priority support (terms to be agreed)"],
     cta: { label: "Contact sales", href: "/contact/" },
   },
 ];
@@ -65,5 +65,5 @@ export const comparisonRows: ComparisonRow[] = [
   { label: "Integrations", values: { free: "Web forms", growth: "WhatsApp, payments", business: "All", enterprise: "All + custom" } },
   { label: "Dedicated CA", values: { free: false, growth: false, business: false, enterprise: true } },
   { label: "SSO & audit logs", values: { free: false, growth: false, business: false, enterprise: true } },
-  { label: "Support", values: { free: "Community", growth: "Email, chat", business: "Priority", enterprise: "24×7" } },
+  { label: "Support", values: { free: "Community", growth: "Email, chat", business: "Priority", enterprise: "Dedicated" } },
 ];

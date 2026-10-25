@@ -1,16 +1,15 @@
-export type FormKind = "contact" | "newsletter" | "login" | "register";
+import { supabaseFormTransport } from "@/lib/supabase/formTransport";
+
+/** Login, register and password reset talk to Supabase Auth directly (lib/auth); only these two are plain submissions. */
+export type FormKind = "contact" | "newsletter";
 export type FormResult = { ok: true } | { ok: false; error: string };
 export type FormTransport = (kind: FormKind, data: unknown) => Promise<FormResult>;
 
 /**
- * The ONLY place form submissions leave the browser.
- * Today: no backend — wait briefly and succeed.
- * Later: replace the body with a fetch() to Formspree / an API route.
+ * The ONLY place contact / newsletter submissions leave the browser: Supabase (lib/supabase/formTransport.ts).
+ * Without Supabase settings it reports that the form isn't connected rather than pretending to succeed.
  */
-const defaultTransport: FormTransport = async () => {
-  await new Promise((r) => setTimeout(r, 800));
-  return { ok: true };
-};
+const defaultTransport: FormTransport = supabaseFormTransport;
 
 let transport: FormTransport = defaultTransport;
 

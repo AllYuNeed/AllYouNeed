@@ -1,4 +1,5 @@
 import type { LegalDoc } from "./types";
+import { site } from "../site";
 
 // PLACEHOLDER — sample text. Have a lawyer review before launch.
 export const termsDoc: LegalDoc = {
@@ -12,10 +13,10 @@ export const termsDoc: LegalDoc = {
     { heading: "4. Your data", body: ["You retain ownership of the data you enter. You grant us a licence to process it only to provide, secure and improve the Service. You can export your data at any time in standard formats.", "We process personal data in accordance with our Privacy Policy and the Digital Personal Data Protection Act, 2023."] },
     { heading: "5. Compliance filings", body: ["Returns and filings prepared by the Service are based on the data you enter and require your review and confirmation before submission. You remain responsible for the accuracy and timeliness of your statutory filings. Professional services from our partner network are governed by separate engagement terms."] },
     { heading: "6. Acceptable use", body: ["You may not use the Service to violate any law, infringe intellectual property, transmit malware, or attempt to access other customers' data. We may suspend accounts that pose a security or legal risk."] },
-    { heading: "7. Availability and support", body: ["We aim for 99.9% monthly uptime, excluding scheduled maintenance announced in advance. Support channels and response targets depend on your plan."] },
+    { heading: "7. Availability and support", body: ["Any uptime commitment will be set out in your plan or order form, excluding scheduled maintenance announced in advance. Support channels and response targets depend on your plan."] },
     { heading: "8. Limitation of liability", body: ["To the extent permitted by law, our total liability for any claim arising from the Service is limited to the fees paid by you in the twelve months preceding the claim. We are not liable for indirect or consequential losses, including penalties arising from late or inaccurate filings caused by data you provided."] },
     { heading: "9. Termination", body: ["You may cancel at any time from account settings. We may terminate for material breach with notice. On termination you retain read-only access for 90 days to export your data, after which it is deleted per our retention schedule."] },
     { heading: "10. Governing law", body: ["These terms are governed by the laws of India. Courts in Bengaluru, Karnataka have exclusive jurisdiction, subject to arbitration under the Arbitration and Conciliation Act, 1996 where applicable."] },
-    { heading: "11. Contact", body: ["Questions about these terms: legal@allyouneed.in."] },
+    { heading: "11. Contact", body: ["Questions about these terms: " + site.email + "."] },
   ],
 };

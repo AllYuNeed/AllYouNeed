@@ -1,4 +1,5 @@
 import type { LegalDoc } from "./types";
+import { site } from "../site";
 
 // PLACEHOLDER — sample text. Have a lawyer review before launch.
 export const refundDoc: LegalDoc = {
@@ -11,6 +12,6 @@ export const refundDoc: LegalDoc = {
     { heading: "3. Yearly plans", body: ["Yearly subscriptions cancelled within 30 days of the first payment are refunded in full. After 30 days we refund the unused whole months remaining, less the discount received compared with monthly pricing."] },
     { heading: "4. Professional services", body: ["Fees for filings, audits or advisory delivered by professionals from our network are refundable only if the work has not started. Government fees and penalties are never refundable."] },
     { heading: "5. Service failures", body: ["If we miss our uptime commitment in a month, you may request a service credit as described in your plan's SLA."] },
-    { heading: "6. How to request a refund", body: ["Email billing@allyouneed.in from your registered address with your organisation name and invoice number. Approved refunds are processed to the original payment method within 7–10 working days."] },
+    { heading: "6. How to request a refund", body: ["Email " + site.email + " from your registered address with your organisation name and invoice number. Approved refunds are processed to the original payment method within 7–10 working days."] },
   ],
 };
