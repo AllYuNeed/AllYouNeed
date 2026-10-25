@@ -38,7 +38,7 @@ export function DashboardMock({ compact, className }: { compact?: boolean; class
   const reduce = usePrefersReducedMotion();
   return (
     <div className={cn("relative", className)}>
-      <Toasts messages={["Invoice #1042 paid · ₹1,18,000", "GSTR-3B filed for August", "Payroll run approved · 46 employees", "New lead from Instagram: Kaveri Textiles"]} />
+      <Toasts messages={["Invoice #1042 paid · ₹1,18,000", "GSTR-3B filed for August", "Payroll run approved · 46 employees", "New lead from Instagram: Sample lead A"]} />
       <div className={cn("grid gap-3", compact ? "grid-cols-2" : "grid-cols-2 lg:grid-cols-4")}>
         {kpis.map((k) => (
           <div key={k.label} className="rounded-xl border border-border bg-surface p-3">

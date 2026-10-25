@@ -4,6 +4,7 @@ import { site } from "@/content/site";
 import { footerColumns, compliance } from "@/content/nav";
 import { Logo } from "@/components/brand/Logo";
 import { Container } from "@/components/ui/Container";
+import { PlaceholderTag } from "@/components/ui/PlaceholderTag";
 import { NewsletterForm } from "@/components/forms/NewsletterForm";
 
 // Evaluated once at build time (static export); keeps render pure.
@@ -60,6 +61,7 @@ export function Footer() {
           <p>© {year} Allyouneed. All rights reserved. {site.legalName}.</p>
           <p>
             <a href={`mailto:${site.email}`} className="link-underline">{site.email}</a> · <a href={site.phoneHref} className="link-underline">{site.phone}</a>
+            {site.contactIsPlaceholder ? <PlaceholderTag /> : null}
           </p>
         </div>
       </Container>

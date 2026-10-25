@@ -57,16 +57,16 @@ export function ContactForm() {
     <form method="post" onSubmit={onSubmit} noValidate aria-label="Book a demo" className="space-y-5">
       <div className="grid gap-5 sm:grid-cols-2">
         <Field id="name" label="Full name" required error={errors.name?.message}>
-          <Input autoComplete="name" placeholder="Priya Nair" disabled={busy} {...register("name")} />
+          <Input autoComplete="name" placeholder="Your full name" disabled={busy} {...register("name")} />
         </Field>
         <Field id="email" label="Work email" required error={errors.email?.message}>
-          <Input type="email" autoComplete="email" placeholder="priya@company.in" disabled={busy} {...register("email")} />
+          <Input type="email" autoComplete="email" placeholder="you@company.in" disabled={busy} {...register("email")} />
         </Field>
         <Field id="phone" label="Phone" required error={errors.phone?.message} hint="10-digit Indian mobile, +91 optional">
           <Input type="tel" inputMode="numeric" autoComplete="tel" placeholder="+91 98765 43210" disabled={busy} {...register("phone")} />
         </Field>
         <Field id="company" label="Company" required error={errors.company?.message}>
-          <Input autoComplete="organization" placeholder="Meridian Foods" disabled={busy} {...register("company")} />
+          <Input autoComplete="organization" placeholder="Your company" disabled={busy} {...register("company")} />
         </Field>
       </div>
       <Field id="teamSize" label="Team size" required error={errors.teamSize?.message}>

@@ -8,6 +8,7 @@ import { X } from "lucide-react";
 import type { NavLink } from "@/content/nav";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/brand/Logo";
+import { useAuth } from "@/lib/auth/useAuth";
 import { ease } from "@/lib/motion";
 
 type Props = {
@@ -24,6 +25,7 @@ export function MobileNav({ open, onClose, links, returnFocusRef }: Props) {
   const drawer = useRef<HTMLDivElement>(null);
   const firstLink = useRef<HTMLAnchorElement>(null);
   const lenis = useLenis();
+  const { status, signOut } = useAuth();
 
   useEffect(() => {
     if (!open) return;
@@ -110,8 +112,24 @@ export function MobileNav({ open, onClose, links, returnFocusRef }: Props) {
               ))}
             </nav>
             <div className="mt-auto flex flex-col gap-3">
-              <Button href="/login/" variant="outline" onClick={onClose}>Log in</Button>
-              <Button href="/register/" arrow onClick={onClose}>Start free</Button>
+              {status === "signed-in" ? (
+                <>
+                  <Button href="/account/" variant="outline" onClick={onClose}>Account</Button>
+                  <Button
+                    onClick={() => {
+                      onClose();
+                      void signOut();
+                    }}
+                  >
+                    Log out
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button href="/login/" variant="outline" onClick={onClose}>Log in</Button>
+                  <Button href="/register/" arrow onClick={onClose}>Start free</Button>
+                </>
+              )}
             </div>
           </m.div>
         </>

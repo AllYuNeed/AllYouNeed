@@ -9,11 +9,11 @@ type Lead = { id: string; name: string; value: string; source: string };
 const columns = ["New", "Qualified", "Proposal"] as const;
 const initial: Record<(typeof columns)[number], Lead[]> = {
   New: [
-    { id: "l1", name: "Kaveri Textiles", value: "₹2.4L", source: "Instagram" },
-    { id: "l2", name: "Arka Dental Care", value: "₹86K", source: "Website" },
+    { id: "l1", name: "Sample lead A", value: "₹2.4L", source: "Instagram" },
+    { id: "l2", name: "Sample lead B", value: "₹86K", source: "Website" },
   ],
-  Qualified: [{ id: "l3", name: "Nimbus Logistics", value: "₹5.1L", source: "Referral" }],
-  Proposal: [{ id: "l4", name: "Suryodaya Schools", value: "₹3.7L", source: "Google" }],
+  Qualified: [{ id: "l3", name: "Sample lead C", value: "₹5.1L", source: "Referral" }],
+  Proposal: [{ id: "l4", name: "Sample lead D", value: "₹3.7L", source: "Google" }],
 };
 
 export function CrmMock({ compact, className }: { compact?: boolean; className?: string }) {

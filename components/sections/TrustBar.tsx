@@ -4,7 +4,8 @@ import { Marquee } from "@/components/motion/Marquee";
 import { CountUp } from "@/components/motion/CountUp";
 import { Reveal } from "@/components/motion/Reveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
-import { stats, trustHeadline, trustLogos } from "@/content/stats";
+import { PlaceholderTag } from "@/components/ui/PlaceholderTag";
+import { stats, statsArePlaceholder, trustHeadline, trustLogos } from "@/content/stats";
 
 export function TrustBar() {
   return (
@@ -27,12 +28,24 @@ export function TrustBar() {
           {stats.map((s) => (
             <StaggerItem key={s.label} className="text-center">
               <p className="font-display text-4xl font-extrabold tracking-tight text-text sm:text-5xl">
-                <CountUp value={s.value} suffix={s.suffix} decimals={s.decimals} />
+                {s.value === null ? (
+                  <>
+                    <span aria-hidden="true">XX{s.suffix}</span>
+                    <span className="sr-only">Figure to be supplied</span>
+                  </>
+                ) : (
+                  <CountUp value={s.value} suffix={s.suffix} decimals={s.decimals} />
+                )}
               </p>
               <p className="mt-1 text-sm text-text-muted">{s.label}</p>
             </StaggerItem>
           ))}
         </Stagger>
+        {statsArePlaceholder ? (
+          <p className="mt-8 text-center text-xs text-text-muted">
+            Figures marked XX are placeholders<PlaceholderTag />
+          </p>
+        ) : null}
       </Container>
     </section>
   );

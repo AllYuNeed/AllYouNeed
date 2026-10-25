@@ -7,7 +7,7 @@ import { spring, viewport } from "@/lib/motion";
 
 const fields = [
   ["PAN", "ABCPK1234F"],
-  ["Employer", "Meridian Foods Pvt Ltd"],
+  ["Employer", "Sample Employer Pvt Ltd"],
   ["Gross salary (Form 16)", "₹14,20,000"],
   ["80C deductions", "₹1,50,000"],
   ["TDS deducted", "₹1,02,400"],

@@ -8,10 +8,9 @@ import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 import { Menu } from "lucide-react";
 import { mainNav } from "@/content/nav";
 import { Logo } from "@/components/brand/Logo";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { MagneticButton } from "@/components/motion/MagneticButton";
 import { ThemeToggle } from "./ThemeToggle";
+import { AuthActions } from "./AuthActions";
 import { MobileNav } from "./MobileNav";
 import { cn } from "@/lib/cn";
 import { ease } from "@/lib/motion";
@@ -78,12 +77,7 @@ export function Navbar() {
 
             <div className="flex items-center gap-2">
               <ThemeToggle />
-              <Link href="/login/" className="link-underline hidden px-2 text-sm font-medium text-text-muted hover:text-text sm:inline-block">
-                Log in
-              </Link>
-              <MagneticButton className="hidden sm:block">
-                <Button href="/register/" size="sm" arrow>Start free</Button>
-              </MagneticButton>
+              <AuthActions />
               <button
                 ref={menuButton}
                 type="button"

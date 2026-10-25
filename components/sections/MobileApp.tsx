@@ -48,7 +48,7 @@ export function MobileApp() {
           <div className="relative mx-auto flex h-[560px] w-full max-w-md items-center justify-center">
             <m.div style={reduce ? { y: 0, rotate: 0 } : { y: y1, rotate: r1 }} className="absolute left-0 top-6 z-10">
               <PhoneFrame tone="light">
-                <p className="text-xs font-semibold">Good morning, Rhea</p>
+                <p className="text-xs font-semibold">Good morning</p>
                 <div className="mt-3"><DashboardMock compact /></div>
               </PhoneFrame>
             </m.div>

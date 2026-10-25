@@ -3,6 +3,7 @@ import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
+import { PlaceholderTag } from "@/components/ui/PlaceholderTag";
 import { Reveal } from "@/components/motion/Reveal";
 import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 import { testimonials } from "@/content/testimonials";
@@ -13,6 +14,9 @@ export function Testimonials() {
       <Container>
         <Reveal>
           <SectionHeading eyebrow="Customers" title="Teams that switched, in their words" />
+          <p className="mt-4 text-center text-xs text-text-muted">
+            Placeholder testimonials, to be replaced with real customer quotes<PlaceholderTag />
+          </p>
         </Reveal>
         <Stagger className="mt-14 grid gap-4 lg:grid-cols-3">
           {testimonials.map((t) => (

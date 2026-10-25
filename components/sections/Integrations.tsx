@@ -40,7 +40,7 @@ export function Integrations() {
             <Card className="h-full">
               <Lock aria-hidden="true" className="size-7 text-primary" />
               <h3 className="mt-4 font-display text-xl font-bold text-text">Enterprise-grade security</h3>
-              <p className="mt-2 text-text-muted">Encryption in transit and at rest, role-based access per branch and module, full audit logs and Indian data residency. Designed to align with the DPDP Act 2023, ISO 27001 and SOC 2.</p>
+              <p className="mt-2 text-text-muted">Encryption in transit and at rest, role-based access per branch and module, full audit logs, with data-residency details to be confirmed. Designed to align with the DPDP Act 2023, ISO 27001 and SOC 2.</p>
             </Card>
           </Reveal>
         </div>

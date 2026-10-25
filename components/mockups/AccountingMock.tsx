@@ -5,11 +5,11 @@ import { cn } from "@/lib/cn";
 import { ease, viewport } from "@/lib/motion";
 
 const rows = [
-  ["Sales — Meridian Foods", "INV-1042", "1,18,000", "Reconciled"],
-  ["Purchase — Bluefin Exports", "PUR-388", "64,900", "Reconciled"],
+  ["Sales — Customer A", "INV-1042", "1,18,000", "Reconciled"],
+  ["Purchase — Vendor B", "PUR-388", "64,900", "Reconciled"],
   ["Payroll — August", "PAY-08", "18,92,400", "Posted"],
   ["GST payable — 3B", "GST-08", "2,14,760", "Ready"],
-  ["Rent — Indiranagar office", "EXP-211", "1,85,000", "Reconciled"],
+  ["Rent — office", "EXP-211", "1,85,000", "Reconciled"],
 ];
 
 export function AccountingMock({ compact, className }: { compact?: boolean; className?: string }) {
